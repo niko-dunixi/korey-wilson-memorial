@@ -11,3 +11,9 @@
   margin-top: 0em;
   font-family: 'Fahkwang', sans-serif;
 }
+
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
