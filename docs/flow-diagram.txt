@@ -1,0 +1,17 @@
+@startuml
+title Korey Wilson Memorial
+
+(*) --> "index.html"
+note right: This is a slide-show page that has music running in the background.\nPeople's rememberances will appear off to the side and change at regular intervals.\nA submit rememberance button will appear at the bottom of the screen.
+"index.html" --> "Wants to submit a rememberance"
+
+if "Is user logged into Facebook?" then
+-->[true] "Can submit a rememberance"
+else
+-->[false] "Facebook Login prompt"
+-->"Can submit a rememberance"
+endif
+
+"Can submit a rememberance" --> "index.html"
+
+@enduml
