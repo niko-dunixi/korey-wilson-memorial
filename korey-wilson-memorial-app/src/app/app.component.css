@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Fahkwang|Muli');
+
+.korey-title {
+  text-align: center;
+}
+.korey-title h2 {
+  font-family: 'Muli', sans-serif;
+  margin-bottom: 0em;
+}
+.korey-title h3 {
+  margin-top: 0em;
+  font-family: 'Fahkwang', sans-serif;
+}
