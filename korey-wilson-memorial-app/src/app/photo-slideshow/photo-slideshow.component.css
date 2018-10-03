@@ -1,0 +1,53 @@
+/* http://emergentweb.com/test/valign.html# */
+
+div {
+  height: 100%;
+}
+.outter-div {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.middle-div {
+  display: table-cell;
+  vertical-align: middle;
+}
+.inner-div {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100;
+}
+
+.black-background {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background-color: #000;
+}
+.background-image {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+
+  background-image: url('/assets/img/korey/0.jpg');
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  -webkit-filter: blur(25px);
+  -moz-filter: blur(25px);
+  -o-filter: blur(25px);
+  -ms-filter: blur(25px);
+  filter: blur(25px);
+}

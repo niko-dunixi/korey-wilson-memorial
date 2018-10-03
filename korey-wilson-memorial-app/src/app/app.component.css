@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Fahkwang|Muli');
 
 .korey-title {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 6em;
+
   text-align: center;
+  color: #FFF;
+  background-color: #000;
 }
 .korey-title h2 {
   font-family: 'Muli', sans-serif;
@@ -12,8 +20,14 @@
   font-family: 'Fahkwang', sans-serif;
 }
 
-body {
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
+app-photo-slideshow {
+  position: fixed;
+  top: 6em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+app-background-music-player {
+  display: none;
 }
