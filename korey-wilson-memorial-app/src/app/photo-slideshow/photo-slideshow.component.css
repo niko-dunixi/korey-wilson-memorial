@@ -1,22 +1,22 @@
 /* http://emergentweb.com/test/valign.html# */
 
-div {
-  height: 100%;
-}
 .outter-div {
   display: table;
   position: absolute;
   height: 100%;
   width: 100%;
 }
-.middle-div {
-  display: table-cell;
-  vertical-align: middle;
+.foreground-image {
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
-.inner-div {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100;
+.foreground-image img {
+  max-width: 100%;
+  height: auto;
 }
 
 .black-background {
