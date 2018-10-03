@@ -16,17 +16,25 @@ export class PhotoSlideshowComponent implements OnInit {
 
   constructor() {
     // Set the total number of pictures we have and start using one randomly
-    this.maxImageCount = 4
-    this.currentImageIndex = Math.floor(Math.random() * this.maxImageCount);
+    this.maxImageCount = 4;
+    this.selectRandomIndex();
     // Loop through all images
     this.looper = timer(0, 5000);
     this.looper.subscribe(tick => {
-      this.currentImageIndex = (this.currentImageIndex + 1) % this.maxImageCount;
+      this.incrementImageIndex();
       this.setImage();
     })
   }
 
   ngOnInit() {
+  }
+
+  selectRandomIndex() {
+    this.currentImageIndex = Math.floor(Math.random() * this.maxImageCount);
+  }
+
+  incrementImageIndex() {
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.maxImageCount;
   }
 
   setImage() {
