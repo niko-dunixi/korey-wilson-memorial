@@ -1,4 +1,4 @@
-/* http://emergentweb.com/test/valign.html# */
+/* Main layout setup */
 
 .outter-div {
   display: table;
@@ -16,6 +16,9 @@ img {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  border: 5px solid #000;
+  animation: fadein 1s ease-in;
 }
 
 .black-background {
@@ -27,6 +30,8 @@ img {
   background-color: #000;
 }
 .background-image {
+  animation: fadein 1s ease-in;
+
   position: absolute;
   left: 0px;
   right: 0px;
@@ -49,4 +54,15 @@ img {
   -o-filter: blur(25px);
   -ms-filter: blur(25px);
   filter: blur(25px);
+}
+
+/* Opacity Changes */
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
