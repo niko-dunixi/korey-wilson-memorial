@@ -6,17 +6,16 @@
   height: 100%;
   width: 100%;
 }
-.foreground-image {
-  width: 50%;
-  height: 50%;
-  overflow: hidden;
-  margin: auto;
+
+img {
+  /* 
+  Legit, the only thing that worked: 
+  https://www.w3schools.com/css/css_align.asp
+  */
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-}
-.foreground-image img {
-  max-width: 100%;
-  height: auto;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .black-background {
