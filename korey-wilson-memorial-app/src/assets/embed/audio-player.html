@@ -13,7 +13,9 @@
         player.setAttribute("src", currentSong);
         player.play();
       }
-      document.getElementById("audioPlayer").addEventListener("onend", advanceSong);
+      document.getElementById("audioPlayer").onended = () => {
+        advanceSong();
+      };
       advanceSong();
     </script>
   </body>
