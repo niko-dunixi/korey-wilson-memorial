@@ -7,17 +7,32 @@
   width: 100%;
 }
 
-img {
-  /* 
-  Legit, the only thing that worked: 
-  https://www.w3schools.com/css/css_align.asp
-  */
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@media screen and (max-width: 600px) {
+  img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    border: 5px solid #000;
+  }
+}
 
-  border: 5px solid #000;
+@media screen and (min-width: 601px) {
+  img {
+    /* 
+    Legit, the only thing that worked: 
+    https://www.w3schools.com/css/css_align.asp
+    */
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    border: 5px solid #000;
+  }
 }
 
 .black-background {
