@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class BackgroundMusicPlayerComponent implements OnInit {
 
   songs: string[];
-  songIndex = 0;
+  songIndex = -1;
 
   constructor() {
     const folder = "/assets/audio/";
@@ -27,10 +27,12 @@ export class BackgroundMusicPlayerComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.advancePlayerTrack();
   }
 
   advancePlayerTrack() {
     this.songIndex = (this.songIndex + 1) % this.songs.length;
+    console.log('Playing ' + this.songs[this.songIndex]);
   }
 
 }
