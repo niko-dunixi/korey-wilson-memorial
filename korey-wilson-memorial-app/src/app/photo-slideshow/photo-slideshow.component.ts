@@ -1,14 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, Subscriber, TimeInterval, Observable, timer } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { Observable, timer } from 'rxjs';
+import { trigger, state, style, animate, transition } from '@angular/animations'
+import { timeout } from 'q';
 
 @Component({
   selector: 'app-photo-slideshow',
   templateUrl: './photo-slideshow.component.html',
-  styleUrls: ['./photo-slideshow.component.css']
+  styleUrls: ['./photo-slideshow.component.css'],
+  animations: [
+    trigger('transitionImage',[
+      state('imageUp', style({
+        opacity: 1
+      })),
+      state('imageDown', style({
+        opacity: 0
+      })),
+      transition('imageUp => imageDown',[
+        animate('1s')
+      ]),
+      transition('imageDown => imageUp',[
+        animate('1s')
+      ])
+    ])
+  ]
 })
 export class PhotoSlideshowComponent implements OnInit {
 
+  imageUp: boolean
   maxImageCount: number
   currentImageIndex: number
   looper: Observable<number>
@@ -16,17 +34,30 @@ export class PhotoSlideshowComponent implements OnInit {
 
   constructor() {
     // Set the total number of pictures we have and start using one randomly
+    this.imageUp = false;
     this.maxImageCount = 4;
     this.selectRandomIndex();
-    // Loop through all images
-    this.looper = timer(0, 5000);
-    this.looper.subscribe(tick => {
-      this.incrementImageIndex();
-      this.setImage();
-    })
+    this.setImage();
+    this.looper = timer(1000, 8000);
   }
 
   ngOnInit() {
+    // Loop through all images
+    // FIXME: This is mixing an observable with old-school javascript timeouts. This is nasty.
+    this.looper.subscribe(() => {
+      setTimeout(() => {
+        this.toggleVisible();
+        this.incrementImageIndex();
+        this.setImage();
+        setTimeout(() => {
+          this.toggleVisible();
+        }, 6500);
+      },1500);
+    });
+  }
+
+  toggleVisible() {
+    this.imageUp = !this.imageUp;
   }
 
   selectRandomIndex() {
