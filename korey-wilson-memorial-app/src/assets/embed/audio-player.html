@@ -9,7 +9,7 @@
         songIndex = (songIndex + 1) % songs.length;
         const player = document.getElementById("audioPlayer");
         const currentSong = songs[songIndex];
-        console.log("Setting current song: " + currentSong);
+        console.log("Setting current music: " + currentSong);
         player.setAttribute("src", currentSong);
         player.play();
       }
