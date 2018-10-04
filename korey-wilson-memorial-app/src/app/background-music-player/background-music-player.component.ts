@@ -7,32 +7,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackgroundMusicPlayerComponent implements OnInit {
 
+  currentAudioPlayer: HTMLAudioElement
   songs: string[];
   songIndex = -1;
 
   constructor() {
     const folder = "/assets/audio/";
     this.songs = [
-      folder + "01 Rest in Peace.m4a",
-      folder + "02 What Appears.m4a",
-      folder + "03 Got Yours.m4a",
-      folder + "04 A Place We Set Afire.m4a",
-      folder + "05 Leave a Light On.m4a",
-      folder + "06 The Hurt Is Gone.m4a",
-      folder + "07 Empty Street.m4a",
-      folder + "08 I'm a Wrecking Ball.m4a",
-      folder + "09 Savior's Robes.m4a",
-      folder + "10 Fields & Fences.m4a",
+      folder + "01 Rest in Peace.mp3",
+      folder + "02 What Appears.mp3",
+      folder + "03 Got Yours.mp3",
+      folder + "04 A Place We Set Afire.mp3",
+      folder + "05 Leave a Light On.mp3",
+      folder + "06 The Hurt Is Gone.mp3",
+      folder + "07 Empty Street.mp3",
+      folder + "08 I'm a Wrecking Ball.mp3",
+      folder + "09 Savior's Robes.mp3",
+      folder + "10 Fields & Fences.mp3",
     ];
+    this.currentAudioPlayer = new Audio()
    }
 
   ngOnInit() {
     this.advancePlayerTrack();
+    this.currentAudioPlayer.onended = () => this.advancePlayerTrack();
   }
 
   advancePlayerTrack() {
     this.songIndex = (this.songIndex + 1) % this.songs.length;
-    console.log('Playing ' + this.songs[this.songIndex]);
+    const currentSong = this.songs[this.songIndex];
+    this.currentAudioPlayer.setAttribute("src", currentSong);
+    this.currentAudioPlayer.play();
+    console.log('Playing ' + currentSong);
   }
 
 }
