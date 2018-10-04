@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-background-music-player',
@@ -7,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackgroundMusicPlayerComponent implements OnInit {
 
-  currentAudioPlayer: HTMLAudioElement
   songs: string[];
   songIndex = -1;
+  currentSong: SafeUrl
 
-  constructor() {
+  constructor(private sanitizer: DomSanitizer) {
     const folder = "/assets/audio/";
     this.songs = [
       folder + "01 Rest in Peace.mp3",
@@ -25,20 +26,16 @@ export class BackgroundMusicPlayerComponent implements OnInit {
       folder + "09 Savior's Robes.mp3",
       folder + "10 Fields & Fences.mp3",
     ];
-    this.currentAudioPlayer = new Audio()
    }
 
   ngOnInit() {
     this.advancePlayerTrack();
-    this.currentAudioPlayer.onended = () => this.advancePlayerTrack();
   }
 
   advancePlayerTrack() {
     this.songIndex = (this.songIndex + 1) % this.songs.length;
-    const currentSong = this.songs[this.songIndex];
-    this.currentAudioPlayer.setAttribute("src", currentSong);
-    this.currentAudioPlayer.play();
-    console.log('Playing ' + currentSong);
+    this.currentSong = this.sanitizer.bypassSecurityTrustResourceUrl(this.songs[this.songIndex]);
+    console.log('Playing ' + this.currentSong);
   }
 
 }
