@@ -38,7 +38,7 @@ export class PhotoSlideshowComponent implements OnInit {
     this.maxImageCount = 4;
     this.selectRandomIndex();
     this.setImage();
-    this.looper = timer(1000, 8000);
+    this.looper = timer(1000, 10000);
   }
 
   ngOnInit() {
@@ -51,7 +51,7 @@ export class PhotoSlideshowComponent implements OnInit {
         this.setImage();
         setTimeout(() => {
           this.toggleVisible();
-        }, 6500);
+        }, 8500);
       },1500);
     });
   }
