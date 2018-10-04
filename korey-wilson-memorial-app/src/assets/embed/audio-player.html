@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <audio autoplay id="audioPlayer"></audio>
+
+    <script type='text/javascript'>
+      var songs = ["/assets/audio/01 Rest in Peace.mp3","/assets/audio/02 What Appears.mp3","/assets/audio/03 Got Yours.mp3","/assets/audio/04 A Place We Set Afire.mp3","/assets/audio/05 Leave a Light On.mp3","/assets/audio/06 The Hurt Is Gone.mp3","/assets/audio/07 Empty Street.mp3","/assets/audio/08 I'm a Wrecking Ball.mp3","/assets/audio/09 Savior's Robes.mp3","/assets/audio/10 Fields & Fences.mp3"];
+      var songIndex = -1;
+      function advanceSong() {
+        songIndex = (songIndex + 1) % songs.length;
+        const player = document.getElementById("audioPlayer");
+        const currentSong = songs[songIndex];
+        console.log("Setting current song: " + currentSong);
+        player.setAttribute("src", currentSong);
+        player.play();
+      }
+      document.getElementById("audioPlayer").addEventListener("onend", advanceSong);
+      advanceSong();
+    </script>
+  </body>
+</html>
+    
