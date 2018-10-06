@@ -29,6 +29,8 @@ export class BackgroundMusicPlayerComponent implements OnInit {
     this.songIndex = -1;
     this.audioPlayer = new Audio();
     this.audioPlayer.onended = () => { this.advanceAudioTrack() };
+    // If the audio fails, this will be set to false. Setting default true prevents the icon from blinking in and out when there is no problem
+    this.autoplaySuccess = true;
    }
 
   ngOnInit() {
