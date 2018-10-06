@@ -29,18 +29,10 @@ app-photo-slideshow {
 }
 
 app-background-music-player {
-  /* bottom: 0; */
-  border: white solid 2px;
   left: 50%;
   transform: translate(-50%, 0%);
   position: fixed;
   bottom: 0;
   height: 4em;
   width: 4em;
-  /* z-index: 1000; */
-  /* opacity: 1; */
 }
-
-/* app-background-music-player {
-  display: none;
-} */

@@ -29,21 +29,34 @@ export class BackgroundMusicPlayerComponent implements OnInit {
     this.songIndex = -1;
     this.audioPlayer = new Audio();
     this.audioPlayer.onended = () => { this.advanceAudioTrack() };
-    this.autoplaySuccess = true;
    }
 
   ngOnInit() {
-    this.autoplaySuccess = this.advanceAudioTrack();
+    this.advanceAudioTrack();
   }
 
-  advanceAudioTrack(): boolean {
+  resetAudioAndPlay() {
+    this.songIndex = -1;
+    this.advanceAudioTrack();
+  }
+
+  advanceAudioTrack() {
     try {
       this.songIndex = (this.songIndex + 1) % this.songs.length;
       this.audioPlayer.src = this.songs[this.songIndex];
+      console.log("Setting current music: " + this.songs[this.songIndex]);
       const promise = this.audioPlayer.play();
-      return promise !== undefined;
+      if (promise !== undefined) {
+        promise.then(_ => {
+          this.autoplaySuccess = true;
+        }).catch(error => {
+          this.autoplaySuccess = false;
+        })
+      } else {
+        this.autoplaySuccess = false;
+      }
     } catch(ignored) {
-      return false;
+      this.autoplaySuccess = false;
     }
   }
 }

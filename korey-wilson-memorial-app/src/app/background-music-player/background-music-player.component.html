@@ -1,6 +1,6 @@
-<div class='button-container'>
+<div [hidden]="this.autoplaySuccess" class='button-container'>
   <!-- <img src="/assets/img/music-note.png"/> -->
-  <button>
+  <button (click)="this.resetAudioAndPlay()">
     <img src="/assets/img/baseline-music_note-24px.svg">
   </button>
 </div>
