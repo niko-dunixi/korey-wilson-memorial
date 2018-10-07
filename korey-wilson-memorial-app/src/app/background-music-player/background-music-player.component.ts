@@ -43,21 +43,17 @@ export class BackgroundMusicPlayerComponent implements OnInit {
   }
 
   advanceAudioTrack() {
-    try {
-      this.songIndex = (this.songIndex + 1) % this.songs.length;
-      this.audioPlayer.src = this.songs[this.songIndex];
-      console.log("Setting current music: " + this.songs[this.songIndex]);
-      const promise = this.audioPlayer.play();
-      if (promise !== undefined) {
-        promise.then(_ => {
-          this.autoplaySuccess = true;
-        }).catch(error => {
-          this.autoplaySuccess = false;
-        })
-      } else {
+    this.songIndex = (this.songIndex + 1) % this.songs.length;
+    this.audioPlayer.src = this.songs[this.songIndex];
+    console.log("Setting current music: " + this.songs[this.songIndex]);
+    const promise = this.audioPlayer.play();
+    if (promise !== undefined) {
+      promise.then(_ => {
+        this.autoplaySuccess = true;
+      }).catch(error => {
         this.autoplaySuccess = false;
-      }
-    } catch(ignored) {
+      })
+    } else {
       this.autoplaySuccess = false;
     }
   }
