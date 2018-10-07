@@ -34,7 +34,7 @@ export class PhotoSlideshowComponent implements OnInit {
   constructor() {
     // Set the total number of pictures we have and start using one randomly
     this.imageUp = false;
-    this.maxImageCount = 208;
+    this.maxImageCount = 209;
     this.selectRandomIndex();
     this.setImage();
   }
