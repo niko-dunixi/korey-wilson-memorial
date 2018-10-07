@@ -29,7 +29,6 @@ export class PhotoSlideshowComponent implements OnInit {
   imageUp: boolean
   maxImageCount: number
   currentImageIndex: number
-  looper: Observable<number>
   currentImage: string
 
   constructor() {
@@ -38,27 +37,12 @@ export class PhotoSlideshowComponent implements OnInit {
     this.maxImageCount = 208;
     this.selectRandomIndex();
     this.setImage();
-    this.looper = timer(1000, 12000);
   }
 
   ngOnInit() {
-    // Loop through all images
-    // FIXME: This is mixing an observable with old-school javascript timeouts. This is nasty.
-    this.looper.subscribe(() => {
-      setTimeout(() => {
-        this.toggleVisible();
-        this.incrementImageIndex();
-        this.setImage();
-        setTimeout(() => {
-          this.toggleVisible();
-        }, 10500);
-      },1500);
-    });
   }
 
-  toggleVisible() {
-    this.imageUp = !this.imageUp;
-  }
+
 
   selectRandomIndex() {
     this.currentImageIndex = Math.floor(Math.random() * this.maxImageCount);
@@ -71,6 +55,19 @@ export class PhotoSlideshowComponent implements OnInit {
   setImage() {
     this.currentImage = "/assets/img/korey/" + this.currentImageIndex + ".jpg" as string
     console.log("Setting current image: " + this.currentImage);
+  }
+
+  handleTransitionDone() {
+    if (this.imageUp) {
+      setTimeout(() => {this.imageUp = false;}, 12 * 1000);
+    } else {
+      this.incrementImageIndex();
+      this.setImage();
+    }
+  }
+
+  handleImageLoaded() {
+    this.imageUp = true;
   }
 
 }
