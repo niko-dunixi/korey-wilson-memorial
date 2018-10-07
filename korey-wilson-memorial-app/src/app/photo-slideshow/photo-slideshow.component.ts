@@ -42,8 +42,6 @@ export class PhotoSlideshowComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
   selectRandomIndex() {
     this.currentImageIndex = Math.floor(Math.random() * this.maxImageCount);
   }
